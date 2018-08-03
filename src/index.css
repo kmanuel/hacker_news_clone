@@ -1,5 +1,20 @@
 body {
   margin: 0;
   padding: 0;
-  font-family: sans-serif;
+  font-family: 'Roboto', sans-serif;
+  font-size: 13px;
+}
+
+#root {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.page {
+  display: flex;
+  flex-direction: column;
+  width: 80%;
+  justify-content: center;
+  background-color: rgb(246, 246, 239);
 }

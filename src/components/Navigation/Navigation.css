@@ -1,0 +1,19 @@
+.navigation {
+    display: flex;
+    align-items: center;
+    justify-items: center;
+    justify-content: center;
+    background-color: #EC6B20;
+}
+
+.navigation > * {
+    padding: 5px 10px;
+}
+
+.navigation_hn {
+    font-weight: bold;
+}
+
+.active {
+    color: white;
+}
