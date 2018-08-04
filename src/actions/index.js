@@ -2,52 +2,45 @@ import axios from 'axios';
 
 const API_BASE = 'https://hacker-news.firebaseio.com/v0';
 
-export function fetchNewest() {
+export function initialNewestFetch() {
     return dispatch => {
-        const topStoriesPromise = axios.get(`${API_BASE}/topstories.json`)
-            .then(res => res.data);
+        const fetchNewestAction = fetchNewest();
 
-        dispatch({
-            type: 'FETCH_NEWEST',
-            payload: topStoriesPromise
-        });
+        dispatch(fetchNewestAction);
 
-        topStoriesPromise
-            .then(() => {
-                dispatch(loadItems(0, process.env.REACT_APP_PAGE_SIZE));
+        fetchNewestAction.payload
+            .then(topStories => {
+                topStories.slice(0, process.env.REACT_APP_PAGE_SIZE)
+                    .forEach(storyId => dispatch(loadItem(storyId)))
             });
-
     }
 }
 
-export function loadItems(fromIdx, toIdx) {
-    return {
-        type: 'LOAD_ITEMS',
-        payload: { fromIdx, toIdx }
+export function loadStory(storyId) {
+    return dispatch => {
+        const item = loadItem(storyId);
+
+        dispatch(item);
+
+        item.payload.then(story => {
+            story.kids.forEach(kidId => {
+                dispatch(loadItem(kidId))
+            });
+        });
     }
 }
 
-export function fetchActiveStory(id) {
+const fetchNewest = () => {
     return {
-        type: 'FETCH_ACTIVE_STORY',
-        payload: axios.get(`${API_BASE}/item/${id}.json`).then(res => res.data)
+        type: 'FETCH_NEWEST',
+        payload: axios.get(`${API_BASE}/topstories.json`).then(res => res.data)
     };
-}
+};
 
-export function fetchStory(id) {
+export const loadItem = (itemId) => {
     return {
-        type: 'FETCH_STORY',
-        payload: axios.get(`${API_BASE}/item/${id}.json`).then(res => res.data)
-    }
-}
-
-export function loadComments(storyId) {
-    const comments = axios.get(`${API_BASE}/item/${storyId}.json`).then(res => res.data)
-        .then(story => story.kids)
-        .then(comments => Promise.all(comments.map(c => axios.get(`${API_BASE}/item/${c}.json`).then(res => res.data))));
-
-    return {
-        type: 'LOAD_COMMENTS',
-        payload: comments
+        type: 'LOAD_ITEM',
+        payload: axios.get(`${API_BASE}/item/${itemId}.json`).then(res => res.data)
     };
-}
+};
+

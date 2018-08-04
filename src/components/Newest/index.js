@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import Story from '../Story';
-import { fetchNewest, loadItems } from '../../actions';
+import { initialNewestFetch, loadItem } from '../../actions';
 import './Newest.css';
 
 import { connect } from 'react-redux';
@@ -10,31 +10,42 @@ class Newest extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            page: 0,
+            page: 1,
             pageSize: process.env.REACT_APP_PAGE_SIZE
         }
     }
 
     componentDidMount() {
-        this.props.fetchNewest();
+        this.props.initialNewestFetch();
     }
 
     onLoadMore = () => {
         const { page, pageSize } = this.state;
         const fromIdx = page * pageSize;
         const toIdx = (page + 1) * pageSize;
+        this.props.newest.slice(fromIdx, toIdx)
+            .forEach(this.props.loadItem);
 
         this.setState((prevState) => {
             return {
                 page: prevState.page + 1
             }
         });
+    };
 
-        this.props.loadItems(fromIdx, toIdx);
+    getStoriesToShow = () => {
+        const { page, pageSize } = this.state;
+        const fromIdx = 0;
+        const toIdx = (page + 1) * pageSize;
+
+        return this.props.newest.slice(fromIdx, toIdx);
     };
 
     render() {
-        const stories = this.props.stories.map(s => <li key={s.id}><Story story={s}/></li>);
+        const stories = this.getStoriesToShow()
+            .map(storyId => this.props.stories[storyId])
+            .filter(story => story)
+            .map(story => <li key={story.id}><Story story={story}/></li>);
 
         return (
             <div>
@@ -53,10 +64,11 @@ class Newest extends Component {
 
 const mapStateToProps = (state) => {
     return {
-        stories: state.stories.resolved
+        newest: state.stories.newest,
+        stories: state.items.story
     };
 };
 
-export default connect(mapStateToProps, { fetchNewest, loadItems })(Newest);
+export default connect(mapStateToProps, { initialNewestFetch, loadItem })(Newest);
 
 

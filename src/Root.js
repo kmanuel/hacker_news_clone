@@ -3,14 +3,13 @@ import { Provider } from 'react-redux';
 import { createStore, applyMiddleware } from 'redux';
 import promiseMiddleware from 'redux-promise';
 import ReduxThunk from 'redux-thunk';
-import storiesMiddleware from './middlewares/storiesMiddleware';
 import reducers from './reducers';
 
 export default ({ children, initialState = {} })  => {
     let store = createStore(
         reducers,
         initialState,
-        applyMiddleware(ReduxThunk, promiseMiddleware, storiesMiddleware));
+        applyMiddleware(ReduxThunk, promiseMiddleware));
 
     return (
         <Provider store={store}>

@@ -1,13 +1,18 @@
-const defaultState = {};
+const defaultState = {
+    story: {},
+    comment: {}
+};
 
 export default (state = defaultState, action) => {
     switch (action.type) {
-        case 'NEW_ITEM':
-            console.log('loaded new item', action.payload);
+        case 'LOAD_ITEM':
             const item = action.payload;
             return {
-                ...defaultState,
-                [item.id]: item
+                ...state,
+                [item.type]: {
+                    ...state[item.type],
+                    [item.id]: item
+                }
             };
         default:
             return state;

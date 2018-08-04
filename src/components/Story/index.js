@@ -23,7 +23,8 @@ export default ({ story }) => {
         <div className="story">
             <div className="story_main">
                 <a className="story_title"
-                   href={story.url}>
+                   href={story.url}
+                   target="_blank">
                     {story.title}
                 </a>
                 <div className="story_url">({stripUrl(story.url)})</div>

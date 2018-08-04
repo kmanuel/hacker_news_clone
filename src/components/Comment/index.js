@@ -9,6 +9,9 @@ export default ({ comment }) => {
             </div>
             <div className="comment_body">
                 <p dangerouslySetInnerHTML={{ __html: comment.text }}></p>
+                {comment.kids &&
+                    <div>show {comment.kids.length} replies</div>
+                }
             </div>
         </div>
     )

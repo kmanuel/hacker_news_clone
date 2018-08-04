@@ -3,11 +3,11 @@ import Comment from '../Comment';
 import './CommentList.css';
 
 export default ({comments}) => {
-    const commentItems = comments.map(c => <Comment key={c.id} comment={c} />);
+    const commentItems = comments.map(c => <li key={c.id}><Comment comment={c} /></li>);
 
     return (
-        <div>
+        <ul>
             {commentItems}
-        </div>
+        </ul>
     );
 }

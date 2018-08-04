@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { loadStory } from '../../actions';
 import Story from '../Story';
 import CommentList from '../CommentList';
-import { fetchActiveStory, loadComments } from '../../actions';
 import './StoryDetail.css';
 
 class StoryDetail extends Component {
@@ -12,29 +12,37 @@ class StoryDetail extends Component {
 
     componentDidMount() {
         const storyId = this.props.match.params.id;
-        this.props.fetchActiveStory(storyId);
-        this.props.loadComments(storyId);
+        this.props.loadStory(storyId);
     }
 
     render() {
-        const {story} = this.props;
+        const { story } = this.props;
 
         return (
             <div className="storydetail">
                 {story &&
-                    <Story story={story}/> }
+                <Story story={story}/> }
                 <CommentList comments={this.props.comments}/>
             </div>
         );
     }
-
 }
 
-const mapStateToProps = (state) => {
-    return {
-        story: state.stories.activeStory,
-        comments: state.comments.comments
-    };
+const mapStateToProps = (state, props) => {
+    const storyId = props.match.params.id;
+    const story = state.items.story[storyId];
+    const comments = [];
+
+    if (story) {
+        story.kids.forEach(commentId => {
+            const comment = state.items.comment[commentId];
+            if (comment) {
+                comments.push(comment);
+            }
+        });
+    }
+
+    return { story, comments };
 };
 
-export default connect(mapStateToProps, { fetchActiveStory, loadComments })(StoryDetail);
+export default connect(mapStateToProps, { loadStory })(StoryDetail);
