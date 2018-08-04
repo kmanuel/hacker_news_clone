@@ -11,7 +11,7 @@ class Newest extends Component {
         super(props);
         this.state = {
             page: 0,
-            pageSize: 2
+            pageSize: process.env.REACT_APP_PAGE_SIZE
         }
     }
 

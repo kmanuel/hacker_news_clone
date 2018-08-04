@@ -1,10 +1,11 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import './Story.css';
 
 export default ({ story }) => {
 
     const stripUrl = (fullUrl) => {
-        return fullUrl.match(/(?<=:\/\/).*(?=\/)/);
+        return fullUrl ? fullUrl.match(/(?<=:\/\/).*(?=\/)/) : '';
     };
 
     const minutesSinceNow = (timestamp) => {
@@ -21,7 +22,10 @@ export default ({ story }) => {
     return (
         <div className="story">
             <div className="story_main">
-                <div className="story_title">{story.title}</div>
+                <a className="story_title"
+                   href={story.url}>
+                    {story.title}
+                </a>
                 <div className="story_url">({stripUrl(story.url)})</div>
             </div>
             <div className="story_sub">
@@ -29,7 +33,7 @@ export default ({ story }) => {
                 <div>by {story.by}</div>
                 <div>{minutesAgo} minutes ago</div>
                 <div>hide</div>
-                <div>{story.kids.length} comments</div>
+                <Link to={`/stories/${story.id}`}>{(story.kids) ? story.kids.length : '0'} comments</Link>
             </div>
         </div>
     );

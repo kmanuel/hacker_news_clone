@@ -6,6 +6,7 @@ import registerServiceWorker from './registerServiceWorker';
 import Root from './Root';
 import Navigation from './components/Navigation';
 import Newest from './components/Newest';
+import StoryDetail from './components/StoryDetail/index';
 import Footer from './components/Footer';
 
 ReactDOM.render(
@@ -13,7 +14,10 @@ ReactDOM.render(
         <BrowserRouter>
             <div className="page">
                 <Navigation />
-                <Route path="/" component={Newest}/>
+                <div>
+                    <Route exact path="/" component={Newest}/>
+                    <Route path="/stories/:id" component={StoryDetail}/>
+                </div>
                 <Footer />
             </div>
         </BrowserRouter>

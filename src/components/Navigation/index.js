@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import './Navigation.css';
 
 export default () => {
@@ -9,7 +10,7 @@ export default () => {
                 <div className="navigation_hn">Reackter News</div>
             </div>
             <div className="navigation_items">
-                <div className="active">new</div>
+                <Link to="/" className="active">top</Link>
                 <div>comments</div>
                 <div>show</div>
                 <div>ask</div>

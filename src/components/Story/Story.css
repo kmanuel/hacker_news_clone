@@ -22,6 +22,11 @@
     padding: 0 5px;
 }
 
+.story_title {
+    text-decoration: none;
+    color: black;
+}
+
 .story_url {
     color: grey;
     font-size: 0.8em;

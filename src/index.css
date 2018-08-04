@@ -19,3 +19,9 @@ body {
   justify-content: center;
   background-color: rgb(246, 246, 239);
 }
+
+
+.sm_grey_text {
+  color: grey;
+  font-size: 0.8em;
+}
