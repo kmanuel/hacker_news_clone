@@ -1,9 +1,7 @@
 import { fetchStory } from '../actions';
 
 export default ({ dispatch, getState }) => (next) => (action) => {
-    if (action.type === 'FETCH_NEWEST' && !action.payload.then) {
-        next(action);
-    } else if (action.type === 'LOAD_ITEMS') {
+    if (action.type === 'LOAD_ITEMS') {
         const newest = getState().stories.newest;
 
         const { fromIdx, toIdx } = action.payload;
