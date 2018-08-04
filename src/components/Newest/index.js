@@ -20,7 +20,7 @@ class Newest extends Component {
     }
 
     onLoadMore = () => {
-        const {page, pageSize} = this.state;
+        const { page, pageSize } = this.state;
         const fromIdx = page * pageSize;
         const toIdx = (page + 1) * pageSize;
 
@@ -38,10 +38,13 @@ class Newest extends Component {
 
         return (
             <div>
-            <ol className="newest_list">
-                {stories}
-                <button onClick={this.onLoadMore}>More</button>
-            </ol>
+                <ol className="newest_list">
+                    {stories}
+                    <button className="newest_list_morebtn"
+                            onClick={this.onLoadMore}>
+                        More
+                    </button>
+                </ol>
             </div>
         );
     }

@@ -2,12 +2,12 @@
     display: flex;
     align-items: center;
     justify-items: center;
-    justify-content: center;
-    background-color: #EC6B20;
+    background-color: #FF5C16;
+    font-size: 1.03em;
 }
 
 .navigation > * {
-    padding: 5px 10px;
+    padding: 1px 1px;
 }
 
 .navigation_hn {
@@ -16,4 +16,31 @@
 
 .active {
     color: white;
+}
+
+.navigation_logo {
+    color: white;
+    font-weight: bold;
+    border: 1px solid white;
+    margin: 1px;
+}
+
+.navigation_brand {
+    display: flex;
+    align-items: center;
+    justify-items: center;
+}
+
+.navigation_brand > * {
+    padding: 0 4px;
+}
+
+.navigation_items {
+    display: flex;
+    align-items: center;
+    justify-items: center;
+}
+
+.navigation_items > * {
+    padding: 0 3px;
 }
