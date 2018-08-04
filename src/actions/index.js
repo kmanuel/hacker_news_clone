@@ -7,6 +7,13 @@ export function fetchNewest () {
     };
 }
 
+export function loadItems (fromIdx, toIdx) {
+    return {
+        type: 'LOAD_ITEMS',
+        payload: {fromIdx, toIdx}
+    }
+}
+
 export function fetchStory (id) {
     return {
         type: 'FETCH_STORY',
