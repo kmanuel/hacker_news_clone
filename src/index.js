@@ -11,7 +11,7 @@ import Footer from './components/Footer';
 
 ReactDOM.render(
     <Root>
-        <BrowserRouter>
+        <BrowserRouter basename="/hacker_news_clone">
             <div className="page">
                 <Navigation />
                 <div>
