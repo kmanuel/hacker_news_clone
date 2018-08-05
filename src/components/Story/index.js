@@ -1,8 +1,12 @@
 import React from 'react';
+import { connect } from 'react-redux';
+import {loadStory} from '../../actions';
 import { Link } from 'react-router-dom';
 import './Story.css';
 
-export default ({ story }) => {
+const StoryDetail = (props) => {
+
+    const { story } = props;
 
     const stripUrl = (fullUrl) => {
         return fullUrl ? fullUrl.match(/(?<=:\/\/).*(?=\/)/) : '';
@@ -19,6 +23,10 @@ export default ({ story }) => {
 
     const minutesAgo = minutesSinceNow(story.time);
 
+    const preload = (storyId) => {
+        props.loadStory(storyId);
+    };
+
     return (
         <div className="story">
             <div className="story_main">
@@ -34,8 +42,13 @@ export default ({ story }) => {
                 <div>by {story.by}</div>
                 <div>{minutesAgo} minutes ago</div>
                 <div>hide</div>
-                <Link to={`/stories/${story.id}`}>{(story.kids) ? story.kids.length : '0'} comments</Link>
+                <Link to={`/stories/${story.id}`}
+                      onMouseEnter={() => preload(story.id)}>
+                    {(story.kids) ? story.kids.length : '0'} comments
+                </Link>
             </div>
         </div>
     );
 };
+
+export default connect(null, { loadStory })(StoryDetail);
