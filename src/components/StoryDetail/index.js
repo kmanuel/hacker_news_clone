@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { loadStory } from '../../actions';
 import Story from '../Story';
 import CommentList from '../CommentList';
-import './StoryDetail.css';
+import './StoryDetail.less';
 
 class StoryDetail extends Component {
     constructor(props) {

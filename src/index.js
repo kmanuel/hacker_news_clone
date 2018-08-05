@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { BrowserRouter, Route } from 'react-router-dom';
-import './index.css';
+import './index.less';
 import registerServiceWorker from './registerServiceWorker';
 import Root from './Root';
 import Navigation from './components/Navigation';

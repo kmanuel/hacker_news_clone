@@ -1,8 +1,11 @@
+@import "variables";
+
 body {
   margin: 0;
   padding: 0;
   font-family: 'Roboto', sans-serif;
-  font-size: 12px;
+  font-size: @font-size-default;
+  color: @black-text-color;
 }
 
 #root {
@@ -17,11 +20,7 @@ body {
   flex-direction: column;
   width: 80%;
   justify-content: center;
-  background-color: rgb(246, 246, 239);
+  background-color: @bg-color;
 }
 
 
-.sm_grey_text {
-  color: grey;
-  font-size: 0.8em;
-}

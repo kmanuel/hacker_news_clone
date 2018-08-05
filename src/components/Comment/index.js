@@ -1,13 +1,13 @@
 import React from 'react';
-import './Comment.css'
+import './Comment.less'
 
 export default ({ comment }) => {
     return (
         <div className="comment">
-            <div className="comment_head sm_grey_text">
+            <div className="head">
                 {comment.by} 0 minutes ago [-]
             </div>
-            <div className="comment_body">
+            <div className="body">
                 <p dangerouslySetInnerHTML={{ __html: comment.text }}></p>
                 {comment.kids &&
                     <div>show {comment.kids.length} replies</div>

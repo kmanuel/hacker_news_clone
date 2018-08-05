@@ -1,0 +1,33 @@
+@import '../../mixins';
+
+.story {
+  display: flex;
+  flex-direction: column;
+  padding: 3px;
+
+  .main {
+    display: flex;
+
+    & > * {
+      padding: 0 5px;
+    }
+
+    .title {
+      text-decoration: none;
+      color: @black-text-color;
+    }
+
+    .url {
+      .sm_grey_text;
+    }
+  }
+
+  .sub {
+    display: flex;
+    .sm_grey_text;
+
+    & > * {
+      padding: 0 5px;
+    }
+  }
+}

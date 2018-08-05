@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import {loadStory} from '../../actions';
 import { Link } from 'react-router-dom';
-import './Story.css';
+import './Story.less';
 
 const StoryDetail = (props) => {
 
@@ -29,15 +29,15 @@ const StoryDetail = (props) => {
 
     return (
         <div className="story">
-            <div className="story_main">
-                <a className="story_title"
+            <div className="main">
+                <a className="title"
                    href={story.url}
                    target="_blank">
                     {story.title}
                 </a>
-                <div className="story_url">({stripUrl(story.url)})</div>
+                <div className="url">({stripUrl(story.url)})</div>
             </div>
-            <div className="story_sub">
+            <div className="sub">
                 <div>{story.score} points</div>
                 <div>by {story.by}</div>
                 <div>{minutesAgo} minutes ago</div>

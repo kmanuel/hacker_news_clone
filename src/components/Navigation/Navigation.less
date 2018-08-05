@@ -1,0 +1,48 @@
+@import '../../variables';
+
+.navigation {
+    display: flex;
+    align-items: center;
+    justify-items: center;
+    background-color: @orange-color;
+    font-size: @font-size-lg;
+
+    & > * {
+        padding: 1px 1px;
+    }
+
+    .active {
+        color: @white-text-color;
+    }
+
+    .brand {
+        display: flex;
+        align-items: center;
+        justify-items: center;
+
+        .logo {
+            color: @white-text-color;
+            font-weight: bold;
+            border: 1px solid white;
+            margin: 1px;
+        }
+
+        .hn {
+            font-weight: bold;
+        }
+
+        & > * {
+            padding: 0 4px;
+        }
+    }
+
+    .items {
+        display: flex;
+        align-items: center;
+        justify-items: center;
+
+        & > * {
+            padding: 0 3px;
+        }
+    }
+}

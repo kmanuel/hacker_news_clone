@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import Story from '../Story';
 import { initialNewestFetch, loadItem } from '../../actions';
-import './Newest.css';
+import './Newest.less';
 
 import { connect } from 'react-redux';
 
@@ -51,7 +51,7 @@ class Newest extends Component {
             <div>
                 <ol className="newest_list">
                     {stories}
-                    <button className="newest_list_morebtn"
+                    <button className="more_btn"
                             onClick={this.onLoadMore}>
                         More
                     </button>
