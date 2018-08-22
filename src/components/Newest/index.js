@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import Story from '../Story';
-import { initialNewestFetch, loadItem } from '../../actions';
+import { initialNewestFetch, loadItem } from '../../actions/itemActions';
 import './Newest.less';
 
 import { connect } from 'react-redux';

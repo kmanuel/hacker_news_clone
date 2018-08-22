@@ -1,3 +1,5 @@
+import { LOAD_ITEM } from '../actions/types';
+
 const defaultState = {
     story: {},
     comment: {}
@@ -5,7 +7,7 @@ const defaultState = {
 
 export default (state = defaultState, action) => {
     switch (action.type) {
-        case 'LOAD_ITEM':
+        case LOAD_ITEM:
             const item = action.payload;
             return {
                 ...state,

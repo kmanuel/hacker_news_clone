@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { loadStory } from '../../actions';
+import { loadStory } from '../../actions/itemActions';
 import Story from '../Story';
 import CommentList from '../CommentList';
 import './StoryDetail.less';

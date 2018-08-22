@@ -1,4 +1,8 @@
 import axios from 'axios';
+import {
+    FETCH_NEWEST,
+    LOAD_ITEM,
+} from './types';
 
 const API_BASE = 'https://hacker-news.firebaseio.com/v0';
 
@@ -32,14 +36,14 @@ export function loadStory(storyId) {
 
 const fetchNewest = () => {
     return {
-        type: 'FETCH_NEWEST',
+        type: FETCH_NEWEST,
         payload: axios.get(`${API_BASE}/topstories.json`).then(res => res.data)
     };
 };
 
 export const loadItem = (itemId) => {
     return {
-        type: 'LOAD_ITEM',
+        type: LOAD_ITEM,
         payload: axios.get(`${API_BASE}/item/${itemId}.json`).then(res => res.data)
     };
 };

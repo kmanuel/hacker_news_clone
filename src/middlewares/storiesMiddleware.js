@@ -1,4 +1,4 @@
-import { fetchStory } from '../actions';
+import { fetchStory } from '../actions/itemActions';
 
 export default ({ dispatch, getState }) => (next) => (action) => {
     if (action.type === 'LOAD_ITEMS') {

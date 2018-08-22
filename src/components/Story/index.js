@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import {loadStory} from '../../actions';
+import {loadStory} from '../../actions/itemActions';
 import { Link } from 'react-router-dom';
 import './Story.less';
 

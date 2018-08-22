@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import UserNav from './UserNav';
 import './Navigation.less';
 
 export default () => {
@@ -16,6 +17,9 @@ export default () => {
                 <div>ask</div>
                 <div>jobs</div>
                 <div>submit</div>
+            </div>
+            <div>
+                <UserNav />
             </div>
         </div>
     );

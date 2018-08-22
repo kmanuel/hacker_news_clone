@@ -6,7 +6,8 @@ import registerServiceWorker from './registerServiceWorker';
 import Root from './Root';
 import Navigation from './components/Navigation';
 import Newest from './components/Newest';
-import StoryDetail from './components/StoryDetail/index';
+import StoryDetail from './components/StoryDetail/';
+import Login from './components/Login';
 import Footer from './components/Footer';
 
 ReactDOM.render(
@@ -17,6 +18,7 @@ ReactDOM.render(
                 <div>
                     <Route exact path="/" component={Newest}/>
                     <Route path="/stories/:id" component={StoryDetail}/>
+                    <Route path="/login" component={Login}/>
                 </div>
                 <Footer />
             </div>

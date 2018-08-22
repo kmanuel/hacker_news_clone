@@ -1,7 +1,7 @@
 import React from 'react';
 import { Provider } from 'react-redux';
 import { createStore, applyMiddleware } from 'redux';
-import promiseMiddleware from 'redux-promise';
+import promiseMiddleware from './middlewares/async';
 import ReduxThunk from 'redux-thunk';
 import reducers from './reducers';
 
